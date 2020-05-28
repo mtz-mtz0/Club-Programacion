@@ -7,20 +7,33 @@ public class Ejercicio2 {
     //Variables para alojar el numero dado y resultado 
     private int numero, resultado;
 
+    //metodo para pedir el numero;
+    public void Entrada(){
+    	numero = Integer.parseInt(JOptionPane.showInputDialog("Ingresa un numero"));
+    }
+
+    //metodo para imprimir el numero;
+    public void Salida(){
+    	JOptionPane.showMessageDialog(null,"La  suma de los digitos es: "+resultado);
+    }
+
     //metodo para realizar la suma 
     public void suma() {
-        //pedir el numero mediante una ventana emergente 
-        numero = Integer.parseInt(JOptionPane.showInputDialog("Ingresa un numero"));
 
-
-            //ciclo para separar los digitos
-            while (numero > 0) {
-                resultado += numero % 10;
-                numero /= 10;
-            }
-            //impresion de resultado por ventana emergente
-            JOptionPane.showMessageDialog(null,"La  suma de los digitos es: "+resultado);
-               
+        //ciclo para separar los digitos
+        while (numero != 0) {
+            resultado += numero % 10;
+            numero /= 10;
+        }
+        //condicion para evaluar si el resultado aun tiene numeros por sumar
+        if(resultado>=10){
+        	numero=resultado;
+        	resultado=0;
+      		while (numero != 0) {
+            	resultado += numero % 10;
+            	numero /= 10;
+        	}
+        }      
     }
 
     //metodo principal para ejecutar el programa
@@ -28,7 +41,9 @@ public class Ejercicio2 {
 
         //creacion de objeto para imprimir el resultado
         Ejercicio2 ejercicio = new Ejercicio2();
+        ejercicio.Entrada();
         ejercicio.suma();
+        ejercicio.Salida();
 
     }
 }
